@@ -10,8 +10,10 @@ public class Controller : MonoBehaviour
     public float speedIncrease = 10;
     public float zoffset = 100;
     public float zoffset2 = 138.5f;
+    public float zoffset3 = 138.5f;
     public GameObject cube;
     public GameObject street;
+    public GameObject buildings;
     public float waitTime = .35f;
     int x = 1;
     int y = 1;
@@ -31,6 +33,7 @@ public class Controller : MonoBehaviour
         StartCoroutine(Wait3());
         StartCoroutine(Wait4());
         StartCoroutine(Wait5());
+        StartCoroutine(Wait6());
         rb = GetComponent<Rigidbody>();
     }
 
@@ -78,7 +81,7 @@ public class Controller : MonoBehaviour
      y = ycount;
      var position = new Vector3(x, y, zoffset);
     GameObject Cube = Instantiate(cube, position, Quaternion.identity) as GameObject;
-    Destroy(Cube, 15);
+        Destroy(Cube, 15);
     
         StartCoroutine(Wait());
        
@@ -120,6 +123,25 @@ IEnumerator Wait3()
         //Destroy(Street, 15);
 
         StartCoroutine(Wait5());
+
+    }
+
+    IEnumerator Wait6()
+    {
+
+        //int xcount = Random.Range(45, 22);
+        //int ycount = Random.Range(1, 2);
+
+        yield return new WaitForSeconds(2f);
+
+        zoffset3 += 138.5f;
+
+        var position2 = new Vector3(37.8f, 25f, zoffset3);
+        GameObject Buildings = Instantiate(buildings, position2, Quaternion.identity) as GameObject;
+        //Destroy(Street, 15);
+        Destroy(Buildings, 15);
+
+        StartCoroutine(Wait6());
 
     }
 

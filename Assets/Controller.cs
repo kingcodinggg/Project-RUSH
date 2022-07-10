@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour
         //int zoffset = Random.Range(-7108, 7100);
         zoffset = -7000;
         zoffset2 = -7138;
+        zoffset3 = -7138;
         StartCoroutine(Wait());
         StartCoroutine(Wait2());
         StartCoroutine(Wait3());
@@ -139,7 +140,8 @@ IEnumerator Wait3()
         var position2 = new Vector3(37.8f, 25f, zoffset3);
         GameObject Buildings = Instantiate(buildings, position2, Quaternion.identity) as GameObject;
         //Destroy(Street, 15);
-        Destroy(Buildings, 15);
+        yield return new WaitForSeconds(2f);
+        Destroy(Buildings, 30);
 
         StartCoroutine(Wait6());
 

@@ -9,7 +9,9 @@ public class Controller : MonoBehaviour
     public float speed = 30f;
     public float speedIncrease = 10;
     public float zoffset = 100;
+    public float zoffset2 = 138.5f;
     public GameObject cube;
+    public GameObject street;
     public float waitTime = .35f;
     int x = 1;
     int y = 1;
@@ -23,10 +25,12 @@ public class Controller : MonoBehaviour
 
         //int zoffset = Random.Range(-7108, 7100);
         zoffset = -7000;
+        zoffset2 = -7138;
         StartCoroutine(Wait());
         StartCoroutine(Wait2());
         StartCoroutine(Wait3());
         StartCoroutine(Wait4());
+        StartCoroutine(Wait5());
         rb = GetComponent<Rigidbody>();
     }
 
@@ -99,6 +103,24 @@ IEnumerator Wait3()
         yield return new WaitForSeconds(210f);
         speedIncrease = speedIncrease + 10;
         StartCoroutine(Wait4());
+    }
+
+    IEnumerator Wait5()
+    {
+
+        //int xcount = Random.Range(45, 22);
+        //int ycount = Random.Range(1, 2);
+
+        yield return new WaitForSeconds(1f);
+        
+        zoffset2 += 138.5f;
+       
+        var position = new Vector3(37.8f, 0.017748f, zoffset2);
+        GameObject Street = Instantiate(street, position, Quaternion.identity) as GameObject;
+        //Destroy(Street, 15);
+
+        StartCoroutine(Wait5());
+
     }
 
 }

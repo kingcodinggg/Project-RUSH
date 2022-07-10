@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -15,6 +16,7 @@ public class Controller : MonoBehaviour
     public GameObject street;
     public GameObject buildings;
     public float waitTime = .35f;
+    public Button left, right;
     int x = 1;
     int y = 1;
     public float[] values;
@@ -23,6 +25,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         values = new float[4];
 
         //int zoffset = Random.Range(-7108, 7100);
@@ -37,6 +40,8 @@ public class Controller : MonoBehaviour
         StartCoroutine(Wait6());
         rb = GetComponent<Rigidbody>();
     }
+
+    
 
     // Update is called once per frame
     void FixedUpdate()

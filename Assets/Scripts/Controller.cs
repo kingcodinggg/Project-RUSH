@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     float screenWidth = Screen.width;
 
     private Rigidbody rb;
+    private Rigidbody rbBuildings;
     public float turnSpeed = 5f;
     public float speed = 30f;
     public float speedIncrease = 10;
@@ -41,6 +42,7 @@ public class Controller : MonoBehaviour
         StartCoroutine(Wait5());
         StartCoroutine(Wait6());
         rb = GetComponent<Rigidbody>();
+        rbBuildings = buildings.GetComponent<Rigidbody>();
     }
 
     
@@ -64,6 +66,7 @@ public class Controller : MonoBehaviour
 
             
         rb.AddForce(Vector3.forward * speed);
+        //rbBuildings.AddForce(Vector3.back * speed);
         Touch touch = Input.GetTouch(0);
         if (touch.position.x > (screenWidth / 2))
         {

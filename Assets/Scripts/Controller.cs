@@ -65,8 +65,8 @@ public class Controller : MonoBehaviour
             } */
 
             
-        rb.AddForce(Vector3.forward * speed);
-        //rbBuildings.AddForce(Vector3.back * speed);
+        //rb.AddForce(Vector3.forward * speed);
+        rbBuildings.AddForce(Vector3.back * speed);
         Touch touch = Input.GetTouch(0);
         if (touch.position.x > (screenWidth / 2))
         {

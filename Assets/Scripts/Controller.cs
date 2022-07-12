@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    float screenWidth = Screen.width;
+
     private Rigidbody rb;
     public float turnSpeed = 5f;
     public float speed = 30f;
@@ -62,7 +64,17 @@ public class Controller : MonoBehaviour
 
             
         rb.AddForce(Vector3.forward * speed);
-        if(Input.GetKey(KeyCode.D))
+        Touch touch = Input.GetTouch(0);
+        if (touch.position.x > (screenWidth / 2))
+        {
+            rb.AddForce(Vector3.right * turnSpeed);
+        }
+        else
+        {
+            rb.AddForce(Vector3.left * turnSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(Vector3.right * turnSpeed);
         }

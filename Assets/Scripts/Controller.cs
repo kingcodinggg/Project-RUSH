@@ -65,25 +65,28 @@ public class Controller : MonoBehaviour
             } */
 
             
-        //rb.AddForce(Vector3.forward * speed);
-        rbBuildings.AddForce(Vector3.back * speed);
-        Touch touch = Input.GetTouch(0);
-        if (touch.position.x > (screenWidth / 2))
+        rb.AddForce(Vector3.forward * speed);
+        //rbBuildings.AddForce(Vector3.back * 30);
+        if (Input.touchCount > 0)
         {
-            rb.AddForce(Vector3.right * turnSpeed);
-        }
-        else
-        {
-            rb.AddForce(Vector3.left * turnSpeed);
-        }
+            Touch touch = Input.GetTouch(0);
+            if (touch.position.x > (screenWidth / 2))
+            {
+                rb.AddForce(Vector3.right * turnSpeed);
+            }
+            else
+            {
+                rb.AddForce(Vector3.left * turnSpeed);
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(Vector3.right * turnSpeed);
-        }
-        if(Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(Vector3.left * turnSpeed);
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(Vector3.right * turnSpeed);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(Vector3.left * turnSpeed);
+            }
         }
         
     }
@@ -149,12 +152,12 @@ IEnumerator Wait3()
 
     IEnumerator Wait6()
     {
-
+        
         //int xcount = Random.Range(45, 22);
         //int ycount = Random.Range(1, 2);
 
         yield return new WaitForSeconds(2f);
-
+        
         zoffset3 += 138.5f;
 
         var position2 = new Vector3(37.8f, 25f, zoffset3);
@@ -162,9 +165,11 @@ IEnumerator Wait3()
         //Destroy(Street, 15);
         yield return new WaitForSeconds(2f);
         Destroy(Buildings, 30);
+        
 
         StartCoroutine(Wait6());
-
+        
+        
     }
 
 }

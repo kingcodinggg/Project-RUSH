@@ -23,12 +23,13 @@ public class Controller : MonoBehaviour
     int x = 1;
     int y = 1;
     public float[] values;
+    public bool dead = false;
 
  
     // Start is called before the first frame update
     void Start()
     {
-
+        dead = false;
         values = new float[4];
 
         //int zoffset = Random.Range(-7108, 7100);
@@ -64,8 +65,11 @@ public class Controller : MonoBehaviour
                 }
             } */
 
-            
-        rb.AddForce(Vector3.forward * speed);
+            if(dead == false)
+        {
+            rb.AddForce(Vector3.forward * speed);
+        }
+        //rb.AddForce(Vector3.forward * speed);
         //rbBuildings.AddForce(Vector3.back * 30);
         if (Input.touchCount > 0)
         {
@@ -89,6 +93,14 @@ public class Controller : MonoBehaviour
             }
         }
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Dumpster")
+        {
+            dead = true;
+        }
     }
 
     IEnumerator Wait()
